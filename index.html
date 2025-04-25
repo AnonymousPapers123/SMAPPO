@@ -86,7 +86,7 @@
 
           </div>
           <p>
-          In this section, we provide more insights about into experiments described in the paper.
+          In this section, we provide more insights into experiments described in the paper.
           </p>
 
           <h3>Curriculum Learning Experiment</h3>
@@ -168,7 +168,10 @@
       <div class="container redactor">
         <div class="w-full">
 
-          <h2>More Experiments</h2>
+          <h2>Generalization</h2>
+
+          This section provides more experiments to show the generalization capabilities of our model for training in different scenarios, 
+          such as training with randomized starting positions, and training with physical constraints.  
           
           <h3>Randomization</h3>
 
@@ -232,8 +235,10 @@
           <h4>Maximum Speed and Safety Stops</h4>
 
           <p>
-            As physical constraints, we trained the agents with safety stops and limited max speed. Also here we ran three replicas of this experiment. 
-            This resulted in a full safety guarantee (zero collisions) while agents were still able to deliver some parts.
+            As physical constraints, we trained the agents with safety stops and limited maximum speed. 
+            We run multiple experiments for the values of the maximum speed and the safety stop distance. It has been found that for a robot of 1 KG mass, 
+            a maximum speed limit of 0.1 meter per second and a safety stop distance of 0.02 meter resulted in a full safety guarantee (zero collisions) 
+            while agents were still able to deliver some parts. Also here we ran three replicas of each experiment.
           </p>
 
           <!-- 2m84s1v2s3_seed3 -->
