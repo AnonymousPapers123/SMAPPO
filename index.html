@@ -100,6 +100,10 @@
             <tr><td><img src="assets/images/FullTraining/Full_training_all_Collisions.png"></td><td><img src="assets/images/FullTraining/Full_training_all_Machine_Utilization.png"></td></tr>
           </table>
 
+          <table>
+            <tr><td><img src="assets/images/FullTraining/FullRetraining_EpisodeReward10.png"></td><td><img src="assets/images/FullTraining/FullRetraining_EpisodeReward12.png"></td><td><img src="assets/images/FullTraining/FullRetraining_EpisodeReward14.png"></td></tr>
+          </table>
+
           <h3>Curriculum Learning Experiment</h3>
 
           <p>
@@ -139,13 +143,50 @@
 
           </div>
           <p>
-          In this section, we provide more insights into experiments described in the paper.
+          In this section, we examin the effect of allowing the models to train for longer or shorter periods of time.
+          This is to see if those limitations are affecting the performance SMAPPO compared to MAPPO.
           </p>
 
-          <h3>Curriculum Learning Experiment</h3>
+          <h3>Full Retraining Experiment With More Training Steps</h3>
 
           <p>
-            In the curriculum learning experiment we noticed that both models are converging way before 400K steps. 
+            In the main full retraining experiment, SMAPPO showed a superior performance and learning speed. 
+            However, looking at the collected rewards curves, it seemed like the two models might might converge to the same values if trained longer.
+            So, here we show the performance when allowing each model 1.6M steps of training at each scenario instead of 400K steps.
+            As shown in the tables below, even with longer training SMAPPO still showed a superior performance to MAPPO.
+          </p>
+
+
+          <table>
+            <tr><td style="text-align: center;">Parts Delivery average and (std)</td><td style="text-align: center;">Total Collisions average (std)</td></tr>
+            <tr><td><img src="assets/images/FullTraining/Long/lonFullRetrainingDelivery.png"></td><td><img src="assets/images/FullTraining/Long/lonFullRetrainingCollisions.png"></td></tr>
+          </table> 
+
+          <p>
+            Although the same SMAPPO model was used across all configurations,
+             whereas a separate MAPPO model was customized for each setup, the results show that 
+             SMAPPO consistently outperformed MAPPO in every setup except one. In that exceptional case,
+             SMAPPO’s performance was still very close to that of the configuration-specific MAPPO. 
+          </p>
+
+          <p>
+            With respect to safety, SMAPPO consistently resulted in a lower number of collisions across all scenarios, 
+            except in the smallest setup where the difference was negligible. 
+            These findings suggest that SMAPPO offers a comparatively higher level of safety than MAPPO.
+          </p>
+
+          <table style="width: 50%; margin: auto;">
+            <tr><td style="text-align: center;">Machine Utilization average (std)</td></tr>
+            <tr> <td><img src="assets/images/FullTraining/Long/lonFullRetrainingUtilization.png"></td> </tr>
+          </table> 
+
+          A similar trend is observed in terms of machine utilization, with SMAPPO outperforming MAPPO in all configurations except one.
+
+
+          <h3>Curriculum Learning Experiment With Less Initial Training</h3>
+
+          <p>
+            In the main curriculum learning experiment we noticed that both models are converging way before 400K steps of initial training. 
             So, in this experiment we show the effect of allowing both models shorter initial training.
              Where we can see that SMAPPO is still superior to MAPPO even with 40K steps of initial training.
           </p>
@@ -154,7 +195,7 @@
           <table>
             <tr><td><img src="assets/images/curriculum_all_collected.png"></td><td><img src="assets/images/curriculum_all_delivered.png"></td></tr>
             <tr><td><img src="assets/images/curriculum_collisions.png"></td><td><img src="assets/images/curriculum__utilization.png"></td></tr>
-          </table>       
+          </table>
           
         </div>
       </div>
