@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMAPPO</title>
+  <link rel="stylesheet" href="assets/app.css" />
+</head>
+
+<style>
+  table {
+  border-collapse: collapse;
+  width: 100%;
+}
+  td, th {
+  text-align: left;
+  padding: 8px;
+}
+
+
+</style>
+
+<body class="relative">
+
+  <!-- Header -->
+  <header>
+
+    <div class="relative z-10 w-full flex flex-col">
+      <!-- Header Logo -->
+      <div class="md:p-4">
+        <a href="https://anonymouspapers123.github.io/SMAPPO" target="_blank" class="inline-block p-4">
+          <img src="assets/images/SMAPPO_Logo.png" alt="SMAPPO" class="header-logo">
+        </a>
+      </div>
+  
+      <!-- Header Image -->
+      <div class="container lg:p-20 h-full flex items-center justify-center">
+        <div class="text-center">
+          <h1 class="text-2xl md:text-5xl leading-tight uppercase">Scalable Multi-Agent Reinforcement Learning Framework For Multi-Machine Tending</h1>
+          <div class="mt-10">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  <main>
+
+    <!-- Nav -->
+    <nav>
+      <ul id="nav">
+        <li><a href="#Introduction" class="p-4">Introduction</a></li>
+        <li><a href="#Additional-Results" class="p-4">Additional Results</a></li>
+        <li><a href="#Training-Convergence" class="p-4">Training Convergence</a></li>
+        <li><a href="#smappo-parameters" class="p-4">SMAPPO Parameters</a></li>
+        <li><a href="#Generalization" class="p-4">Generalization</a></li>
+      </ul>
+    </nav>
+
+    <!-- Section -->
+    <section id="Introduction">
+      <div class="container redactor">
+        <div class="w-full">
+
+          <h2>Introduction</h2>
+          <p>
+            With a great untapped potential robotic manipulators can still offer much to the manufacturing industry. Moreover, incorporating multiple robots promises to enhance resource utilization, increase throughput, and reduce the cost. However, manipulators in the industry, are typically fixed in a one-robot, one-machine setup, limiting their utilization and the solution's scalability. Even when mobile robots are leveraged the setup is usually centralized introducing problems such as the single point of failure and high dependency on strong communication. This work proposes a scalable input-size invariant multi-agent reinforcement learning (MARL) model named SMAPPO for decentralized multi-robot management in an industrial setup to address these issues. To evaluate the model, an existing simulator was optimized for running complex MARL scenarios with large numbers of agents, and a new multi-agent, multi-machine tending scenario was designed. In that scenario, SMAPPO showed superior performance to the state-of-the-art model MAPPO in scalability with full retraining, minimum retraining, and no retraining at all. 
+          </p>
+          <p> Here we provide complementary materials for our paper Scalable Multi-Agent Reinforcement Learning Framework For Multi-Machine Tending.</p>
+
+
+        </div>
+      </div>
+    </section>
+
+    <section id="Additional-Results" class="bg-black text-white">
+      <div class="container redactor">
+        <div class="w-full">
+
+          <h2>Additional Results</h2>
+          
+
+          </div>
+          <p>
+          In this section, we provide more insights into experiments described in the paper.
+          </p>
+
+          <h3>Full Training Experiment</h3>
+
+          <p>
+          In this experiment each model was allowed to retrain from scratch in each new scenrio to focus maily in performance comparision.
+          </p>
+
+
+          <table>
+            <tr><td><img src="assets/images/FullTraining/Full_training_all_collected.png"></td><td><img src="assets/images/FullTraining/Full_training_all_Delivered.png"></td></tr>
+            <tr><td><img src="assets/images/FullTraining/Full_training_all_Collisions.png"></td><td><img src="assets/images/FullTraining/Full_training_all_Machine_Utilization.png"></td></tr>
+          </table>
+
+          <h3>Curriculum Learning Experiment</h3>
+
+          <p>
+          This is where each model was progressively exposed to more challenging scenarios to see how much it could benefit from the previous training 
+          to be able to learn the new more challenging task (more agents, machines, and storage areas). 
+          The Introduction of the new entities was done at steps 40K, 60K, and 80K.
+          </p>
+
+
+          <table>
+            <tr><td><img src="assets/images/NewLongCurriculum/Curriculum_Episode_Collected.png"></td><td><img src="assets/images/NewLongCurriculum/Curriculum_Episode_Delivered.png"></td></tr>
+            <tr><td><img src="assets/images/NewLongCurriculum/Curriculum_Episode_Collisions.png"></td><td><img src="assets/images/NewLongCurriculum/Curriculum_Episode_Reward.png"></td></tr>
+          </table>
+
+          <h3>Zero-shot Transfer Experiment</h3>
+
+          Here the model was trained in one scenario (6 agents, 4 machines, and 3 storage areas) and then tested in new scenarios (with more or less entities) without any retraining.
+          <br/>
+
+          <table>
+            <tr><td><img src="assets/images/zero-shot_collected.png"></td><td><img src="assets/images/zero-shot_Delivered.png"></td></tr>
+            <tr><td><img src="assets/images/zero-shot_Collisions.png"></td><td><img src="assets/images/zero-shot_Utilization.png"></td></tr>
+          </table>         
+          
+        </div>
+      </div>
+    </section>
+
+    <section id="Training-Convergence" >
+      <div class="container redactor">
+        <div class="w-full">
+
+          <h2>Training Convergence</h2>
+          
+
+          <div class="block border-t reveal">
+
+          </div>
+          <p>
+          In this section, we provide more insights into experiments described in the paper.
+          </p>
+
+          <h3>Curriculum Learning Experiment</h3>
+
+          <p>
+            In the curriculum learning experiment we noticed that both models are converging way before 400K steps. 
+            So, in this experiment we show the effect of allowing both models shorter initial training.
+             Where we can see that SMAPPO is still superior to MAPPO even with 40K steps of initial training.
+          </p>
+
+
+          <table>
+            <tr><td><img src="assets/images/curriculum_all_collected.png"></td><td><img src="assets/images/curriculum_all_delivered.png"></td></tr>
+            <tr><td><img src="assets/images/curriculum_collisions.png"></td><td><img src="assets/images/curriculum__utilization.png"></td></tr>
+          </table>       
+          
+        </div>
+      </div>
+    </section>
+
+        
+    <section id="smappo-parameters" class="bg-black text-white">
+      <div class="container redactor">
+        <div class="w-full">
+
+          <h2>SMAPPO model and training parameters</h2>
+
+          <div class="block border-t reveal">
+
+          </div>
+
+          <p>
+          This section lists the parameters of our model.
+          </p>
+          <table>
+          <tr><th>Parameter</th> <th>Value</th></tr>
+          <tr><td>Reward Sharing</td><td>False</td></tr>
+          <tr><td>Pick Reward</td><td>15</td></tr>
+          <tr><td>Place Reward</td><td>30</td></tr>
+          <tr><td>Collision Penalty</td><td>-10</td></tr>
+          <tr><td>Distance Rewards Scale</td><td>10</td></tr>
+          <tr><td>Fixed Uncollected Parts Penality</td><td>True</td></tr>
+          <tr><td>Uncollected Penalty</td><td>-0.5</td></tr>
+          <tr><td>Time Penalty</td><td>-0.01</td></tr>
+          
+          <tr><td>Critic Entity Enc. FC Layer Dim.</td><td>18</td></tr>
+          <tr><td>Critic Entity Attention Heads</td><td>3</td></tr>
+          <tr><td>Critic Entity Attention Embedding Dim.</td><td>18</td></tr>
+          <tr><td>Critic Global Attention Heads</td><td>3</td></tr>
+          <tr><td>Critic Global Attention Embedding Dim.</td><td>72</td></tr>
+
+          <tr><td>Actor Entity Enc. FC Layer Dim.</td><td>16</td></tr>
+          <tr><td>Actor Attention Heads</td><td>2</td></tr>
+          <tr><td>Actor Attention Embedding Dim.</td><td>16</td></tr>
+          
+
+          <tr><td>Learning Rate </td><td> 7e-4 </td></tr>
+          <tr><td>Optimizer </td><td> Adam </td></tr>
+          
+          </table>
+
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section -->
+    <section id="Generalization">
+      <div class="container redactor">
+        <div class="w-full">
+
+          <h2>Generalization</h2>
+
+          This section provides more experiments to show the generalization capabilities of our model for training in different scenarios, 
+          such as training with randomized starting positions, and training with physical constraints. In those generalization experiments, 
+          we made use of multiple parallel simulation environments to further speed and stabilize the training process. 
+          
+          <h3>Randomization</h3>
+
+          <p>
+            Instead of fixing the starting location of the agents, machines, and storage areas, we randomized them in each episode of the training. We ran three replicas of this experiment.
+          </p>
+
+          <table><tr><td><img src="assets/images/randomization/Radnomization_collected.png"></td><td><img src="assets/images/randomization/Radnomization_delivered.png"></td></tr>
+            <tr><td><img src="assets/images/randomization/Radnomization_collisions.png"></td><td><img src="assets/images/randomization/Randomization_reward.svg"></td></tr></table>
+
+          
+          <p>
+
+
+         The best model then is qualitatively evaluated in the simulation environment. The videos below show the performance of the model evaluated in randomly generated layouts (left), and evaluated in a reasonable fixed setup that it has never been trained specifically on (right):
+        </p>
+          <table cellspacing="0" cellpadding="0">
+            <tr>
+              <td>  
+            <video controls>  <source src="assets/videos/Rand/Random_positions.mp4" type="video/mp4"> Evluation in Random layouts  </video> 
+              </td>
+            
+              <td>  
+                <video controls>
+                  <source src="assets/videos/Rand/Fixed_Layout_eval.mp4" type="video/mp4">  
+                  Evluation in Fixed layouts
+                </video> 
+                  </td>
+          </tr>
+
+          </table>
+
+          <h3>Physical Contraints</h3>
+
+          <h4>Observation Noise</h4>
+
+          <p>
+            In the real world, it is always possible that the agents do not have perfect information about the environment.
+            To simulate this we added noise to the observations of the agents, adding a randomly selected error between +ve and -ve epsilon for measurement. 
+            Then conducted experiments with different levels of noise (E=0.001, 0.002, 0.005, 0.01, 0.02, 0.1), where 0.1 represents 10% of the whole arena length.
+            Again, we ran three replicas of this experiment.
+          </p>
+
+
+          <table><tr><td><img src="assets/images/PhysicalConstraints/obs_noise_reward.svg"></td><td><img src="assets/images/PhysicalConstraints/obs_noise_collected.svg"></td></tr>
+            <tr><td><img src="assets/images/PhysicalConstraints/obs_noise_delivered.svg"></td><td><img src="assets/images/PhysicalConstraints/obs_noise_collisions.svg"></td></tr>
+          </table>
+
+          <h4>Action Noise</h4>
+
+          <p>
+            Similarly, we added noise to the actions of the agents, adding a randomly selected error between +ve and -ve epsilon for (fx,fy). 
+            Then conducted experiments with different levels of noise (E=0.01, 0.05, 0.1, 0.2), where 0.2 represents 20% of the max action force (1).
+            Again, we ran three replicas of this experiment.
+          </p>
+
+          <table><tr><td><img src="assets/images/PhysicalConstraints/action_noise_reward.svg"></td><td><img src="assets/images/PhysicalConstraints/action_noise_collected.svg"></td></tr>
+            <tr><td><img src="assets/images/PhysicalConstraints/action_noise_delivered.svg"></td><td><img src="assets/images/PhysicalConstraints/action_noise_collisions.svg"></td></tr>
+          </table>
+
+          <h4>Maximum Speed and Safety Stops</h4>
+
+          <p>
+            As physical constraints, we trained the agents with safety stops and limited maximum speed. 
+            We run multiple experiments for the values of the maximum speed and the safety stop distance. It has been found that for a robot of 1 KG mass, 
+            a maximum speed limit of 0.1 meter per second and a safety stop distance of 0.02 meter resulted in a full safety guarantee (zero collisions) 
+            while agents were still able to deliver some parts. Also here we ran three replicas of each experiment.
+          </p>
+
+          <!-- 2m84s1v2s3_seed3 -->
+
+          <table><tr><td><img src="assets/images/PhysicalConstraints/PhysicalConistraints_collected.svg"></td><td><img src="assets/images/PhysicalConstraints/PhysicalConistraints_delivered.svg"></td></tr><tr>
+          </tr><td><img src="assets/images/PhysicalConstraints/PhysicalConistraints_collisions.svg"></td><td><img src="assets/images/PhysicalConstraints/PhysicalConstraint_reward.svg"></td></tr></table>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Section -->
+    <section id="contact" class="bg-black text-white">
+      <div class="container redactor">
+        <div class="w-full">
+
+          <h2>Contact</h2>
+          <p>Comming Soon</p>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <!-- Footer -->
+  <footer class="footer py-4 lg:py-8 lg:px-4 text-sm lg:text-xl bg-white text-black border-black">
+    <div class="flex flex-wrap flex-col lg:flex-row items-center lg:items-start justify-between">
+      <div class="order-2 lg:order-1">
+        <div class="flex items-center">
+          <a href="https://anonymouspapers123.github.io/SMAPPO" target="_blank" class="p-4 inline-block">
+            <img src="assets/images/SMAPPO_Logo_white.png" style="max-width: 10%;" alt="SMAPPO_Logo" class="footer-logo block">
+          </a>
+        </div>
+      </div>
+      <div class="flex items-center justify-end order-1 lg:order-2">
+        <a href="https://anonymouspapers123.github.io/SMAPPO" target="_blank" class="p-4">About us</a>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="assets/app.js"></script>
+</body>
+
+</html>
