@@ -67,7 +67,21 @@
 
           <h2>Introduction</h2>
           <p>
-            With a great untapped potential robotic manipulators can still offer much to the manufacturing industry. Moreover, incorporating multiple robots promises to enhance resource utilization, increase throughput, and reduce the cost. However, manipulators in the industry, are typically fixed in a one-robot, one-machine setup, limiting their utilization and the solution's scalability. Even when mobile robots are leveraged the setup is usually centralized introducing problems such as the single point of failure and high dependency on strong communication. This work proposes a scalable input-size invariant multi-agent reinforcement learning (MARL) model named SMAPPO for decentralized multi-robot management in an industrial setup to address these issues. To evaluate the model, an existing simulator was optimized for running complex MARL scenarios with large numbers of agents, and a new multi-agent, multi-machine tending scenario was designed. In that scenario, SMAPPO showed superior performance to the state-of-the-art model MAPPO in scalability with full retraining, minimum retraining, and no retraining at all. 
+            Robotic manipulators hold significant untapped potential for manufacturing industries, 
+            particularly when deployed in multi-robot configurations that can enhance resource utilization, 
+            increase throughput, and reduce costs. However, industrial manipulators typically operate in isolated one-robot, one-machine setups, limiting both utilization and scalability. Even mobile robot implementations generally rely on centralized architectures, creating vulnerability to single points of failure and requiring robust communication infrastructure.
+          </p>
+          <p>
+            This paper introduces SMAPPO (Scalable Multi-Agent Proximal Policy Optimization), 
+            a scalable input-size invariant multi-agent reinforcement learning model for decentralized multi-robot management in industrial environments. 
+            MAPPO (Multi-Agent Proximal Policy Optimization) represents the current state-of-the-art approach. 
+            We optimized an existing simulator to handle complex multi-agent reinforcement learning scenarios 
+            and designed a new multiple machine tending scenario for evaluation. 
+            Our novel observation encoder enables SMAPPO to handle varying numbers of agents, machines, and storage areas with minimal or no retraining. 
+            Results demonstrate SMAPPO's superior performance compared to the state-of-the-art MAPPO across multiple conditions: 
+            full retraining (up to 61% improvement), curriculum learning (up to 45% increased productivity and up to 49% fewer collisions), 
+            zero-shot generalization to significantly different scenarios (up to 272% better performance without retraining), 
+            and adaptability under extremely low training (up to 100% increase in parts delivery).
           </p>
           <p> Here we provide complementary materials for our paper Scalable Multi-Agent Reinforcement Learning Framework For Multi-Machine Tending.</p>
 
@@ -104,6 +118,13 @@
             <tr><td><img src="assets/images/FullTraining/FullRetraining_EpisodeReward10.png"></td><td><img src="assets/images/FullTraining/FullRetraining_EpisodeReward12.png"></td><td><img src="assets/images/FullTraining/FullRetraining_EpisodeReward14.png"></td></tr>
           </table>
 
+          <p>
+            The following video shows the performance of SMAPPO trained on the (100 agents, 16 machines, and 2 storage areas) scenario.
+          </p>
+          
+          <video controls width="50%" style="margin: auto;">  <source src="assets/videos/fullRetraining/SMAPPOfull100.mp4" type="video/mp4"> zero-shot evluation  </video> 
+
+
           <h3>Curriculum Learning Experiment</h3>
 
           <p>
@@ -118,15 +139,33 @@
             <tr><td><img src="assets/images/NewLongCurriculum/Curriculum_Episode_Collisions.png"></td><td><img src="assets/images/NewLongCurriculum/Curriculum_Episode_Reward.png"></td></tr>
           </table>
 
+          <p>
+            The following video shows the performance of SMAPPO trained with curriculum learning from (6 agents, 4 machines, and 2 storage areas) setup
+            to go gradually to (24 agents, 16 machines and 8 storage areas) setup.
+          </p>
+          
+          <video controls width="50%" style="margin: auto;">  <source src="assets/videos/curriculum/SMAPPOcurr24_16_8.mp4" type="video/mp4"> curriculum evluation  </video> 
+
+
+
           <h3>Zero-shot Transfer Experiment</h3>
 
-          Here the model was trained in one scenario (6 agents, 4 machines, and 3 storage areas) and then tested in new scenarios (with more or less entities) without any retraining.
-          <br/>
+          <p>
+          Here the model was trained in one scenario (6 agents, 4 machines, and 2 storage areas) and then tested in new scenarios (with more or less entities) without any retraining.
+        </p>
 
           <table>
             <tr><td><img src="assets/images/zero-shot_collected.png"></td><td><img src="assets/images/zero-shot_Delivered.png"></td></tr>
             <tr><td><img src="assets/images/zero-shot_Collisions.png"></td><td><img src="assets/images/zero-shot_Utilization.png"></td></tr>
-          </table>         
+          </table> 
+
+          <p>
+            Following is a comparision of the performance of SMAPPO and MAPPO trained on the (6 agents, 4 machines, and 2 storage areas) scenario
+            and evaluated on zero-shot transfer to a scenario with 42 agents, 28 machines, and 14 storage areas.
+          </p>
+          
+          <video controls>  <source src="assets/videos/zero-shot/z422814.mp4" type="video/mp4"> zero-shot evluation  </video> 
+
           
         </div>
       </div>
